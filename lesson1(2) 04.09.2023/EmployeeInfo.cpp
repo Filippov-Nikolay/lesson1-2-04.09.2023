@@ -23,19 +23,19 @@ void inputEmployee(employee& newEmployee) {
 		cin >> newEmployee.phoneNumber;
 	} while (onlyDigits(newEmployee.phoneNumber) || numberOfCharacters(newEmployee.phoneNumber));
 
-
-	// Исправить
 	do {
-		cout << "Зарплата: ";
-		cin >> temp;
+		do {
+			cout << "Зарплата: ";
+			cin >> temp;
+		} while (onlyDigits(temp));
+		newEmployee.salary = stod(temp);
 
-		/*
-		if (temp <= "0")
+		if (newEmployee.salary <= 0)
 			cout << "Число должно быть больше 0!" << endl << endl;
-			*/
-	} while (onlyDigits(temp));
-	newEmployee.salary = stod(temp);
+	} while (newEmployee.salary <= 0);
+	
 }
+
 
 // Функции на чтение сотрудника
 void printEmployee(const employee& newEmployee) {
@@ -45,6 +45,55 @@ void printEmployee(const employee& newEmployee) {
 	cout << "Зарплата: " << newEmployee.salary << endl;
 }
 
+
+// Фукнция на добавление сотдруника
+void addEmployee(employee* oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
+	cout << "Check1" << endl;
+	int numberEmployees = oldNumberEmployee + newNumberEmployee;
+	employee* addEmployee = new employee[numberEmployees];
+
+	cout << "Кол-во сотрудников (олд + нью): " << numberEmployees << endl;
+
+	cout << "Check2" << endl;
+	for (int i = 0; i < oldNumberEmployee; i++) {
+		if (i != numberEmployees) {
+			addEmployee[i] = oldEmployee[i];
+		}
+	}
+	cout << "Check3 - 100%" << endl;
+
+	/*
+	for (int i = 0; i < numberEmployees; i++) {
+		printEmployee(addEmployee[i]);
+	}
+	*/
+
+	for (int i = newNumberEmployee; i < numberEmployees; i++) {
+		inputEmployee(addEmployee[i]);
+	}
+
+	for (int i = 0; i < numberEmployees; i++) {
+		printEmployee(addEmployee[i]);
+	}
+	
+
+	/*
+	
+
+	cout << "Check4" << endl;
+
+
+	cout << "Check5" << endl;
+
+	cout << "oldNumberEmployee: " << oldNumberEmployee << endl;
+	cout << "newNumberEmployee: " << newNumberEmployee << endl;
+
+	for (int i = oldNumberEmployee; i < newNumberEmployee + 1; i++) {
+		cout << "Check6. " << i << endl;
+		inputEmployee(addEmployee[i]);
+	}
+	*/
+}
 
 // Проверки на корректность воода данных
 bool onlyLetters(const char* content) { // Только буквы

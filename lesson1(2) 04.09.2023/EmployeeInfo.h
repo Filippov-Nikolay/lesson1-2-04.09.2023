@@ -14,13 +14,13 @@ void inputEmployee(employee&);
 void printEmployee(const employee&);
 
 // Фукнция на добавление сотдруника
-void addEmployee();
+void addEmployee(employee*, int, int);
 
 // Функция на удаление сотрудника
 void deleteEmployee();
 
-// Функция на поиск по фамилии
-int searchByLastName(const employee);
+// Функция на сортировку по фамилии
+int sortByLastName(const employee);
 
 // Функция на поиск по диапазону зарплаты
 int searchBySalaryRange();

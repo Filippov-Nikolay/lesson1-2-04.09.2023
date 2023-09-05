@@ -10,25 +10,44 @@ int main() {
 	// MENU
 
 	int quantity = 0;
+	int numberEmployees = 0;
 
+	// Проверка на корректность ввода
 	cout << "Введите кол-во сотрудников: ";
 	cin >> quantity;
 
-	employee* newEmployee = new employee[quantity];
+	numberEmployees = quantity;
 
-	for (int i = 0; i < quantity; i++)
+	employee* newEmployee = new employee[numberEmployees];
+
+	// Запись
+	for (int i = 0; i < numberEmployees; i++)
 		inputEmployee(newEmployee[i]);
-	cout << endl;
+	cout << endl << endl;
 
-	for (int i = 0; i < quantity; i++)
+	// Чтение
+	for (int i = 0; i < numberEmployees; i++)
 		printEmployee(newEmployee[i]);
-	cout << endl;
+	cout << endl << endl;
 
-	
+	// Запись в файл
+	for (int i = 0; i < numberEmployees; i++)
+		fileWrite(newEmployee[i]);
 
+	// Чтение файла
 	cout << "\nFile info: " << endl;
-	fileWrite(newEmployee);
 	fileRead();
+
+	// Добавление сотрудника (проверка корректность)
+	cout << "Введите сколько нужно добавить новых сотружников: ";
+	cin >> quantity;
+
+	for (int i = 0; i < quantity; i++) {
+		cout << "Check1" << endl;
+
+		addEmployee(newEmployee, numberEmployees, quantity);
+	}
+	
 
 	delete newEmployee;
 	newEmployee = nullptr;
