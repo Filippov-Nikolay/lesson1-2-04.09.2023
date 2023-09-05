@@ -27,10 +27,10 @@ int compareStrings(const char*, const char*);
 void sortByLastName(employee*, int);
 
 // Функция на поиск по фамилии
-void searchByLastName(employee*, int, string);
+void searchByLastName(const employee*, int, const char* key);
 
 // Функция на поиск по диапазону зарплаты
-void searchBySalaryRange(employee*, int, double, double);
+void searchBySalaryRange(const employee*, int, double, double);
 
 // Функция на удаление сотрудника
 void deleteEmployee(employee*, int&);

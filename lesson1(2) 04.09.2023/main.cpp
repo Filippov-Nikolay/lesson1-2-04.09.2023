@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "EmployeeInfo.h"
 #include "EmployeeInfoFile.h"
 
@@ -9,6 +10,7 @@ int main() {
 
 	// MENU
 	char* temp = new char[100];
+	char* key = new char[strlen(temp)];
 	employee* newEmployee = nullptr;
 
     int userChoice = 0;
@@ -39,7 +41,7 @@ int main() {
 		userChoice = atoi(temp);
 
 		if (userChoice == 0) {
-			cout << "До свидания!" << endl;
+			cout << "\nДо свидания!" << endl;
 			break;
 		}
 		else if (userChoice < minNumberMenu || userChoice > maxNumberMenu) {
@@ -56,9 +58,12 @@ int main() {
 				newEmployee = new employee[numberEmployees];
 
 				// Запись
-				for (int i = 0; i < numberEmployees; i++)
+				for (int i = 0; i < numberEmployees; i++) {
+					cout << "\nВведите информацию о " << i + 1 << "м сотруднике:" << endl;
 					inputEmployee(newEmployee[i]);
-				cout << endl << endl;
+					cout << endl;
+				}
+				cout << endl;
 
 				flag = true;
 			}
@@ -68,14 +73,18 @@ int main() {
 			}
 			else {
 				if (userChoice == 2) {
-					// Чтение
-					for (int i = 0; i < numberEmployees; i++)
+					// Чтение/Вывод
+					cout << endl;
+					for (int i = 0; i < numberEmployees; i++) {
 						printEmployee(newEmployee[i]);
-					cout << endl << endl;
+						cout << endl;
+					}
+					cout << endl;
 				}
 				else if (userChoice == 3) {
 					// Функция на удаление сотрудника
 					deleteEmployee(newEmployee, numberEmployees);
+					cout << endl;
 				}
 				else if (userChoice == 4) {
 					// Функция на сортировку по фамилии
@@ -83,6 +92,19 @@ int main() {
 				}
 				else if (userChoice == 5) {
 					// Функция на поиск по диапазону зарплаты
+					do {
+						cout << "Введите зарплату от: ";
+						cin >> temp;
+					} while (onlyDigits(temp));
+					minSalary = stod(temp);
+					
+					do {
+						cout << "Введите зарплату до: ";
+						cin >> temp;
+					} while (onlyDigits(temp));
+					maxSalary = stod(temp);
+					
+					cout << endl;
 					searchBySalaryRange(newEmployee, numberEmployees, minSalary, maxSalary);
 				}
 				else if (userChoice == 6) {
@@ -91,13 +113,12 @@ int main() {
 					cout << "Введите ключ: ";
 					cin >> temp;
 
-					char* key = new char[strlen(temp)];
+					key = new char[strlen(temp)];
 					key = temp;
 
+					cout << endl;
 					searchByLastName(newEmployee, numberEmployees, key);
-
-					delete[] key;
-					key = nullptr;
+					cout << endl;
 				}
 				else if (userChoice == 7) {
 					// Запись в файл
@@ -132,6 +153,9 @@ int main() {
 		printEmployee(newEmployee[i]);
 	cout << endl << endl;
 	*/
+
+	delete[] key;
+	key = nullptr;
 
 	delete newEmployee;
 	newEmployee = nullptr;

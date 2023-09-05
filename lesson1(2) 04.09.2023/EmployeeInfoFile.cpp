@@ -6,7 +6,7 @@
 using namespace std;
 
 void fileWrite(const employee& newEmployeeInfo) {
-	ofstream text("Employee.txt", ios::app);
+	ofstream text("Employee.txt");
 
 	text << "FirstName: " << newEmployeeInfo.firstName << "." << endl;
 	text << "LastName: " << newEmployeeInfo.lastName << "." << endl;
