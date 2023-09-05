@@ -19,8 +19,11 @@ void addEmployee(employee*, int, int);
 // Функция на удаление сотрудника
 void deleteEmployee();
 
+// Функция для сравнения строк по алфавиту
+int compareStrings(const char*, const char*);
+
 // Функция на сортировку по фамилии
-int sortByLastName(const employee);
+void sortByLastName(employee*, int);
 
 // Функция на поиск по диапазону зарплаты
 int searchBySalaryRange();

@@ -30,6 +30,16 @@ int main() {
 		printEmployee(newEmployee[i]);
 	cout << endl << endl;
 
+
+	sortByLastName(newEmployee, numberEmployees);
+
+	// Чтение
+	for (int i = 0; i < numberEmployees; i++)
+		printEmployee(newEmployee[i]);
+	cout << endl << endl;
+
+	/*
+
 	// Запись в файл
 	for (int i = 0; i < numberEmployees; i++)
 		fileWrite(newEmployee[i]);
@@ -48,6 +58,7 @@ int main() {
 		addEmployee(newEmployee, numberEmployees, quantity);
 	}
 	
+	*/
 
 	delete newEmployee;
 	newEmployee = nullptr;
