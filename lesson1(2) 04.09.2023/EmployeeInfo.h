@@ -13,10 +13,6 @@ struct employee {
 // Функция на изменение размера массива
 void pushBack(int*&, int&, int);
 
-/*
-int* resizeArray(int*, int&, int);
-*/
-
 // Функции на добавление/чтение сотрудников
 void inputEmployee(employee&);
 void printEmployee(const employee&);
@@ -30,8 +26,11 @@ int compareStrings(const char*, const char*);
 // Функция на сортировку по фамилии
 void sortByLastName(employee*, int);
 
+// Функция на поиск по фамилии
+void searchByLastName(employee*, int, string);
+
 // Функция на поиск по диапазону зарплаты
-int searchBySalaryRange();
+void searchBySalaryRange(employee*, int, double, double);
 
 // Функция на удаление сотрудника
 void deleteEmployee(employee*, int&);

@@ -76,7 +76,8 @@ void pushBack(employee*& arr, int& size, employee value) {
 }
 */
 
-// ДОДЕЛАТЬ
+
+// ДОДЕЛАТЬ!
 // Фукнция на добавление сотдруника
 void addEmployee(employee*& oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
 	int numberEmployees = oldNumberEmployee + newNumberEmployee; // Общее кол-во сотрудников
@@ -112,8 +113,6 @@ void addEmployee(employee*& oldEmployee, int oldNumberEmployee, int newNumberEmp
 
 // Функция на сортировку по фамилии
 void sortByLastName(employee* sortLastName, int size) {
-	cout << "Check 1" << endl;
-
 	for (int i = 0; i < size - 1; ++i) {
 		for (int j = 0; j < size - i - 1; ++j) {
 			if (strcmp(sortLastName[j].lastName, sortLastName[j + 1].lastName) > 0) {
@@ -125,37 +124,49 @@ void sortByLastName(employee* sortLastName, int size) {
 	}
 }
 
-/*
-void sortByLastName(employee* sortLastName, int size) {
 
-	cout << "Check 1" << endl;
-
-	for (int i = 1; i < size; i++) {
-		char* current = sortLastName[i].lastName;
-		int j = i - 1;
-
-		while (j >= 0 && compareStrings(sortLastName[j].lastName, current) > 0) {
-			sortLastName[j + 1].lastName = sortLastName[j].lastName;
-			sortLastName[j + 1] = sortLastName[j];
-			--j;
+// Функция на поиск по фамилии
+void searchByLastName(employee* newEmployee, int size, string key) {
+	bool found = false;
+	for (int i = 0; i < size; i++) {
+		if (newEmployee[i].lastName == key) {
+			printEmployee(newEmployee[i]);
+			found = true;
 		}
+	}
 
-		sortLastName[j + 1].lastName = current;
-	}	
-
-	cout << "Last check!" << endl;
+	if (!found)
+		cout << "Ключ не найден!";
 }
-*/
+
+
+// Функция на поиск по диапазону зарплаты
+void searchBySalaryRange(employee* newEmployee, int size, double minSalary, double maxSalary) {
+	bool found = false;
+
+	for (int i = 0; i < size; i++) {
+		if (newEmployee[i].salary >= minSalary && newEmployee[i].salary <= maxSalary) {
+			printEmployee(newEmployee[i]);
+			cout << endl;
+			found = true;
+		}
+	}
+
+	if (!found)
+		cout << "Работники с зарплатой от " << minSalary << " до " << maxSalary << " не найдено." << endl;
+}
 
 
 // Функция на удаление сотрудника
 void deleteEmployee(employee* newEmployee, int& size) {
+	int index;
+	char userChoice;
+
 	if (size <= 0) {
 		cout << "Нет работников, которых можно было бы удалить." << endl;
 		return;
 	}
 
-	int index;
 	cout << "Введите индекс работника для удаления (0-" << size - 1 << "): ";
 	cin >> index;
 
@@ -163,11 +174,11 @@ void deleteEmployee(employee* newEmployee, int& size) {
 		cout << "Неверный индекс работника." << endl;
 		return;
 	}
-	char answ;
+	
 	cout << "Вы уверены, что хотите удалить этого работника? (y/n): ";
-	cin >> answ;
+	cin >> userChoice;
 
-	if (answ == 'y') {
+	if (userChoice == 'y') {
 		delete[] newEmployee[index].firstName;
 		delete[] newEmployee[index].lastName;
 		delete[] newEmployee[index].phoneNumber;
@@ -183,8 +194,10 @@ void deleteEmployee(employee* newEmployee, int& size) {
 	}
 }
 
-// Проверки на корректность воода данных
-bool onlyLetters(const char* content) { // Только буквы
+
+// Проверки на корректность воода данных:
+// Только буквы
+bool onlyLetters(const char* content) { 
 	for (int i = 0; i < strlen(content); i++) {
 		if (isdigit(content[i])) {
 			cout << "Вы ввели недопустимый символ!" << endl << endl;
@@ -194,7 +207,9 @@ bool onlyLetters(const char* content) { // Только буквы
 
 	return false;
 }
-bool onlyDigits(const char* content) { // Только цифры
+
+// Только цифры
+bool onlyDigits(const char* content) { 
 	for (int i = 0; i < strlen(content); i++) {
 		if (isalpha(content[i]) || content[i] == ' ') {
 			cout << "Вы ввели недопустимый символ!" << endl << endl;
@@ -204,7 +219,9 @@ bool onlyDigits(const char* content) { // Только цифры
 
 	return false;
 }
-bool numberOfCharacters(const char* content) { // Кол-во символов
+
+// Кол-во символов
+bool numberOfCharacters(const char* content) { 
 	if (strlen(content) < 8) {
 		cout << "Длина должна быть не менее 8 символов!" << endl << endl;
 		return true;
