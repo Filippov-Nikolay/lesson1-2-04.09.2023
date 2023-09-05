@@ -18,9 +18,18 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="EmployeeInfo.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="EmployeeInfoFile.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="EmployeerInfo.h">
+    <ClInclude Include="EmployeeInfo.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="EmployeeInfoFile.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
