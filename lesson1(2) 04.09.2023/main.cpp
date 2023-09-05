@@ -9,12 +9,15 @@ int main() {
 
 	// MENU
 	char* temp = new char[100];
-	char* UsCh = new char[strlen(temp)];
 	employee* newEmployee = nullptr;
+
     int userChoice = 0;
 	int quantity = 0;
 	int numberEmployees = 0;
 	int maxSalary = 0, minSalary = 0;
+	int minNumberMenu = 0, maxNumberMenu = 8;
+
+	bool flag = false;
 
 	cout << "Меню: " << endl;
 	cout << "1. Ввод данных о сотрудниках" << endl;
@@ -29,25 +32,23 @@ int main() {
 	cout << "0. Выход" << endl;
 
 	do {
-		// ДОДЕЛАТЬ
 		do {
 			cout << "Ввод: ";
 			cin >> temp;
-			UsCh = new char[strlen(temp)];
-		} while (onlyDigits(UsCh));
-
+		} while (onlyDigits(temp));
+		userChoice = atoi(temp);
 
 		if (userChoice == 0) {
 			cout << "До свидания!" << endl;
 			break;
 		}
-		else if (userChoice < 0 || userChoice > 8) {
+		else if (userChoice < minNumberMenu || userChoice > maxNumberMenu) {
 			cout << "Вы ввели неверный пункт меню!" << endl << endl;
 		}
 		else {
 			if (userChoice == 1) {
 				// Проверка на корректность ввода
-				cout << "Введите кол-во сотрудников: ";
+				cout << "\nВведите кол-во сотрудников: ";
 				cin >> quantity;
 
 				numberEmployees = quantity;
@@ -58,48 +59,56 @@ int main() {
 				for (int i = 0; i < numberEmployees; i++)
 					inputEmployee(newEmployee[i]);
 				cout << endl << endl;
-			}
-			else if (userChoice == 2) {
-				// Чтение
-				for (int i = 0; i < numberEmployees; i++)
-					printEmployee(newEmployee[i]);
-				cout << endl << endl;
-			}
-			else if (userChoice == 3) {
-				// Функция на удаление сотрудника
-				deleteEmployee(newEmployee, numberEmployees);
-			}
-			else if (userChoice == 4) {
-				// Функция на сортировку по фамилии
-				sortByLastName(newEmployee, numberEmployees);
-			}
-			else if (userChoice == 5) {
-				// Функция на поиск по диапазону зарплаты
-				searchBySalaryRange(newEmployee, numberEmployees, minSalary, maxSalary);
-			}
-			else if (userChoice == 6) {
-				// Функция на поиск по фамилии
 
-				cout << "Введите ключ: ";
-				cin >> temp;
-
-				char* key = new char[strlen(temp)];
-				key = temp;
-
-				searchByLastName(newEmployee, numberEmployees, key);
-
-				delete[] key;
-				key = nullptr;
+				flag = true;
 			}
-			else if (userChoice == 7) {
-				// Запись в файл
-				for (int i = 0; i < numberEmployees; i++)
-					fileWrite(newEmployee[i]);
+
+			if (!flag) {
+				cout << "Нужно выбрать 1й пункт меню!" << endl << endl;
 			}
-			else if (userChoice == 8) {
-				// Чтение из файла
-				cout << "\nFile info: " << endl;
-				fileRead();
+			else {
+				if (userChoice == 2) {
+					// Чтение
+					for (int i = 0; i < numberEmployees; i++)
+						printEmployee(newEmployee[i]);
+					cout << endl << endl;
+				}
+				else if (userChoice == 3) {
+					// Функция на удаление сотрудника
+					deleteEmployee(newEmployee, numberEmployees);
+				}
+				else if (userChoice == 4) {
+					// Функция на сортировку по фамилии
+					sortByLastName(newEmployee, numberEmployees);
+				}
+				else if (userChoice == 5) {
+					// Функция на поиск по диапазону зарплаты
+					searchBySalaryRange(newEmployee, numberEmployees, minSalary, maxSalary);
+				}
+				else if (userChoice == 6) {
+					// Функция на поиск по фамилии
+
+					cout << "Введите ключ: ";
+					cin >> temp;
+
+					char* key = new char[strlen(temp)];
+					key = temp;
+
+					searchByLastName(newEmployee, numberEmployees, key);
+
+					delete[] key;
+					key = nullptr;
+				}
+				else if (userChoice == 7) {
+					// Запись в файл
+					for (int i = 0; i < numberEmployees; i++)
+						fileWrite(newEmployee[i]);
+				}
+				else if (userChoice == 8) {
+					// Чтение из файла
+					cout << "\nFile info: " << endl;
+					fileRead();
+				}
 			}
 		}
 	} while (userChoice != 0);
