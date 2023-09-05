@@ -98,11 +98,11 @@ void sortByLastName(employee* sortLastName, int size) {
 		cout << "Check: " << sortLastName[i].lastName << endl;
 
 		while (j >= 0 && compareStrings(sortLastName[j].lastName, current) > 0) {
-			sortLastName->lastName[j + 1] = sortLastName->lastName[j];
+			sortLastName[j + 1].lastName = sortLastName[j].lastName;
 			--j;
 		}
 
-		sortLastName->lastName[j + 1] = (char)current;
+		sortLastName[j + 1].lastName = current;
 	}	
 
 	cout << "Last check!" << endl;
