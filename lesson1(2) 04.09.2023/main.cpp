@@ -30,8 +30,12 @@ int main() {
 		printEmployee(newEmployee[i]);
 	cout << endl << endl;
 
-
-	sortByLastName(newEmployee, numberEmployees);
+	// Добавление сотрудника (проверка корректность)
+	cout << "Введите сколько нужно добавить новых сотружников: ";
+	cin >> quantity;
+	for (int i = 0; i < quantity; i++) {
+		addEmployee(newEmployee, numberEmployees, quantity);
+	}
 
 	// Чтение
 	for (int i = 0; i < numberEmployees; i++)
@@ -48,15 +52,15 @@ int main() {
 	cout << "\nFile info: " << endl;
 	fileRead();
 
-	// Добавление сотрудника (проверка корректность)
-	cout << "Введите сколько нужно добавить новых сотружников: ";
-	cin >> quantity;
+	
+	// Функция на сортировку по фамилии
+	sortByLastName(newEmployee, numberEmployees);
 
-	for (int i = 0; i < quantity; i++) {
-		cout << "Check1" << endl;
-
-		addEmployee(newEmployee, numberEmployees, quantity);
-	}
+	// Чтение
+	for (int i = 0; i < numberEmployees; i++)
+		printEmployee(newEmployee[i]);
+	cout << endl << endl;
+	
 	
 	*/
 

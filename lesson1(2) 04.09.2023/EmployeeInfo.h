@@ -9,6 +9,10 @@ struct employee {
 	double salary;
 };
 
+
+// Функция на изменение размера массива
+int* resizeArray(int*, int&, int);
+
 // Функции на добавление/чтение сотрудников
 void inputEmployee(employee&);
 void printEmployee(const employee&);

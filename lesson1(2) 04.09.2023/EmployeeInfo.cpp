@@ -8,19 +8,16 @@ using namespace std;
 void inputEmployee(employee& newEmployee) {
 	char* temp = new char[126];
 
-	/*
 	do {
 		cout << "Имя: ";
 		cin >> newEmployee.firstName;
 	} while (onlyLetters(newEmployee.firstName));
-	*/
 
 	do {
 		cout << "Фамилия: ";
 		cin >> newEmployee.lastName;
 	} while (onlyLetters(newEmployee.lastName));
 	
-	/*
 	do {
 		cout << "Номер телефона: ";
 		cin >> newEmployee.phoneNumber;
@@ -36,49 +33,51 @@ void inputEmployee(employee& newEmployee) {
 		if (newEmployee.salary <= 0)
 			cout << "Число должно быть больше 0!" << endl << endl;
 	} while (newEmployee.salary <= 0);
-	*/
 }
 
 
 // Функции на чтение сотрудника
 void printEmployee(const employee& newEmployee) {
-	// cout << "Имя: " << newEmployee.firstName << endl;
+	cout << "Имя: " << newEmployee.firstName << endl;
 	cout << "Фамилия: " << newEmployee.lastName << endl;
-	// cout << "Номер телефона: " << newEmployee.phoneNumber << endl;
-	// cout << "Зарплата: " << newEmployee.salary << endl;
+	cout << "Номер телефона: " << newEmployee.phoneNumber << endl;
+	cout << "Зарплата: " << newEmployee.salary << endl;
 }
 
+
+// Функция на изменение размера массива
+int* resizeArray(int* oldArray, int& oldSize, int newSize) {
+
+}
 
 // ДОДЕЛАТЬ
 // Фукнция на добавление сотдруника
 void addEmployee(employee* oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
-	cout << "Check1" << endl;
-	int numberEmployees = oldNumberEmployee + newNumberEmployee;
-	employee* addEmployee = new employee[numberEmployees];
+	int numberEmployees = oldNumberEmployee + newNumberEmployee; // Общее кол-во сотрудников
+	employee* newAddEmployee = new employee[numberEmployees];
 
-	cout << "Кол-во сотрудников (олд + нью): " << numberEmployees << endl;
+	cout << "numberEmployees: " << numberEmployees << endl; // 3
+	cout << "oldNumberEmployee: " << oldNumberEmployee << endl; // 2
+	cout << "newNumberEmployee: " << newNumberEmployee << endl; // 1
 
-	cout << "Check2" << endl;
 	for (int i = 0; i < oldNumberEmployee; i++) {
-		if (i != numberEmployees) {
-			addEmployee[i] = oldEmployee[i];
-		}
-	}
-	cout << "Check3 - 100%" << endl;
-
-	for (int i = newNumberEmployee; i < numberEmployees; i++) {
-		inputEmployee(addEmployee[i]);
+		newAddEmployee[i] = oldEmployee[i];
 	}
 
-	for (int i = 0; i < numberEmployees; i++) {
-		printEmployee(addEmployee[i]);
+	for (int i = oldNumberEmployee; i < numberEmployees; i++) {
+		inputEmployee(newAddEmployee[i]);
 	}
+
+	for (int i = 0; i <= newNumberEmployee; i++) {
+		printEmployee(newAddEmployee[i]);
+	}
+
+	cout << "Check100%" << endl;
 }
+
 
 // Функция для сравнения строк по алфавиту
 int compareStrings(char* a, char* b) {
-	cout << "compareStrings: " << a << " " << b << endl;
-
 	while (*a == *b) {
 		++a;
 		++b;
