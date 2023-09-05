@@ -44,15 +44,41 @@ void printEmployee(const employee& newEmployee) {
 	cout << "Зарплата: " << newEmployee.salary << endl;
 }
 
-
+/*
 // Функция на изменение размера массива
 int* resizeArray(int* oldArray, int& oldSize, int newSize) {
+	int* newArray = new int[newSize];
 
+	for (int i = 0; i < oldSize; i++) {
+		newArray[i] = oldArray[i];
+	}
+
+	delete[] oldArray;
+	oldSize = newSize;
+
+	return newArray;
 }
+*/
+
+/*
+void pushBack(employee*& arr, int& size, employee value) {
+	employee* newArray = new employee[size + 1];
+
+	for (int i = 0; i < size; i++) {
+		newArray[i] = arr[i];
+	}
+
+	newArray[size++] = value;
+
+	delete[] arr;
+
+	arr = newArray;
+}
+*/
 
 // ДОДЕЛАТЬ
 // Фукнция на добавление сотдруника
-void addEmployee(employee* oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
+void addEmployee(employee*& oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
 	int numberEmployees = oldNumberEmployee + newNumberEmployee; // Общее кол-во сотрудников
 	employee* newAddEmployee = new employee[numberEmployees];
 
@@ -68,24 +94,38 @@ void addEmployee(employee* oldEmployee, int oldNumberEmployee, int newNumberEmpl
 		inputEmployee(newAddEmployee[i]);
 	}
 
+	/*
 	for (int i = 0; i <= newNumberEmployee; i++) {
 		printEmployee(newAddEmployee[i]);
 	}
+	*/
+
+	/*
+	for (int i = oldNumberEmployee + 1; i < numberEmployees; i++) {
+		pushBack(oldEmployee, oldNumberEmployee, newAddEmployee[i]);
+	}
+	*/
 
 	cout << "Check100%" << endl;
 }
 
 
-// Функция для сравнения строк по алфавиту
-int compareStrings(char* a, char* b) {
-	while (*a == *b) {
-		++a;
-		++b;
+// Функция на сортировку по фамилии
+void sortByLastName(employee* sortLastName, int size) {
+	cout << "Check 1" << endl;
+
+	for (int i = 0; i < size - 1; ++i) {
+		for (int j = 0; j < size - i - 1; ++j) {
+			if (strcmp(sortLastName[j].lastName, sortLastName[j + 1].lastName) > 0) {
+				employee temp = sortLastName[j];
+				sortLastName[j] = sortLastName[j + 1];
+				sortLastName[j + 1] = temp;
+			}
+		}
 	}
-	return *a - *b;
 }
 
-// Функция на сортировку по фамилии
+/*
 void sortByLastName(employee* sortLastName, int size) {
 
 	cout << "Check 1" << endl;
@@ -94,10 +134,9 @@ void sortByLastName(employee* sortLastName, int size) {
 		char* current = sortLastName[i].lastName;
 		int j = i - 1;
 
-		cout << "Check: " << sortLastName[i].lastName << endl;
-
 		while (j >= 0 && compareStrings(sortLastName[j].lastName, current) > 0) {
 			sortLastName[j + 1].lastName = sortLastName[j].lastName;
+			sortLastName[j + 1] = sortLastName[j];
 			--j;
 		}
 
@@ -106,7 +145,43 @@ void sortByLastName(employee* sortLastName, int size) {
 
 	cout << "Last check!" << endl;
 }
+*/
 
+
+// Функция на удаление сотрудника
+void deleteEmployee(employee* newEmployee, int& size) {
+	if (size <= 0) {
+		cout << "Нет работников, которых можно было бы удалить." << endl;
+		return;
+	}
+
+	int index;
+	cout << "Введите индекс работника для удаления (0-" << size - 1 << "): ";
+	cin >> index;
+
+	if (index < 0 || index >= size) {
+		cout << "Неверный индекс работника." << endl;
+		return;
+	}
+	char answ;
+	cout << "Вы уверены, что хотите удалить этого работника? (y/n): ";
+	cin >> answ;
+
+	if (answ == 'y') {
+		delete[] newEmployee[index].firstName;
+		delete[] newEmployee[index].lastName;
+		delete[] newEmployee[index].phoneNumber;
+
+		for (int i = index; i < size - 1; i++)
+			newEmployee[i] = newEmployee[i + 1];
+
+		size--;
+		cout << "Работник удалён." << endl;
+	}
+	else {
+		cout << "Удаление отменено" << endl;
+	}
+}
 
 // Проверки на корректность воода данных
 bool onlyLetters(const char* content) { // Только буквы
