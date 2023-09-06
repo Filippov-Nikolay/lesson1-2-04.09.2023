@@ -6,6 +6,7 @@
 using namespace std;
 
 int main() {
+	system("chcp 1251");
 	setlocale(0, "");
 
 	// MENU
