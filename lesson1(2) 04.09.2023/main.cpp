@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include "EmployeeInfo.h"
 #include "EmployeeInfoFile.h"
@@ -22,45 +22,45 @@ int main() {
 
 	bool flag = false;
 
-	cout << "Меню: " << endl;
-	cout << "1. Ввод данных о сотрудниках" << endl;
-	cout << "2. Вывод данных о сотрудниках (всех)" << endl;
-	cout << "3. Удаление сотрудника" << endl;
-	cout << "4. Сортировка по фамилии сотрудников" << endl;
-	cout << "5. Поиск по ЗП сотрудников" << endl;
-	cout << "6. Поиск по фамилии сотрудников" << endl;
-	cout << "7. Запись данных о сотрудниках в текстовый файл" << endl;
-	cout << "8. Вывод данных о сотрудниках из текстового файла" << endl;
-	// cout << "9. Добавление сотрудника(ов)" << endl;
-	cout << "0. Выход" << endl;
+	cout << "РњРµРЅСЋ: " << endl;
+	cout << "1. Р’РІРѕРґ РґР°РЅРЅС‹С… Рѕ СЃРѕС‚СЂСѓРґРЅРёРєР°С…" << endl;
+	cout << "2. Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ СЃРѕС‚СЂСѓРґРЅРёРєР°С… (РІСЃРµС…)" << endl;
+	cout << "3. РЈРґР°Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°" << endl;
+	cout << "4. РЎРѕСЂС‚РёСЂРѕРІРєР° РїРѕ С„Р°РјРёР»РёРё СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ" << endl;
+	cout << "5. РџРѕРёСЃРє РїРѕ Р—Рџ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ" << endl;
+	cout << "6. РџРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ" << endl;
+	cout << "7. Р—Р°РїРёСЃСЊ РґР°РЅРЅС‹С… Рѕ СЃРѕС‚СЂСѓРґРЅРёРєР°С… РІ С‚РµРєСЃС‚РѕРІС‹Р№ С„Р°Р№Р»" << endl;
+	cout << "8. Р’С‹РІРѕРґ РґР°РЅРЅС‹С… Рѕ СЃРѕС‚СЂСѓРґРЅРёРєР°С… РёР· С‚РµРєСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р°" << endl;
+	// cout << "9. Р”РѕР±Р°РІР»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°(РѕРІ)" << endl;
+	cout << "0. Р’С‹С…РѕРґ" << endl;
 
 	do {
 		do {
-			cout << "Ввод: ";
+			cout << "Р’РІРѕРґ: ";
 			cin >> temp;
 		} while (onlyDigits(temp));
 		userChoice = atoi(temp);
 
 		if (userChoice == 0) {
-			cout << "\nДо свидания!" << endl;
+			cout << "\nР”Рѕ СЃРІРёРґР°РЅРёСЏ!" << endl;
 			break;
 		}
 		else if (userChoice < minNumberMenu || userChoice > maxNumberMenu) {
-			cout << "Вы ввели неверный пункт меню!" << endl << endl;
+			cout << "Р’С‹ РІРІРµР»Рё РЅРµРІРµСЂРЅС‹Р№ РїСѓРЅРєС‚ РјРµРЅСЋ!" << endl << endl;
 		}
 		else {
 			if (userChoice == 1) {
-				// Проверка на корректность ввода
-				cout << "\nВведите кол-во сотрудников: ";
+				// РџСЂРѕРІРµСЂРєР° РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРІРѕРґР°
+				cout << "\nР’РІРµРґРёС‚Рµ РєРѕР»-РІРѕ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ: ";
 				cin >> quantity;
 
 				numberEmployees = quantity;
 
 				newEmployee = new employee[numberEmployees];
 
-				// Запись
+				// Р—Р°РїРёСЃСЊ
 				for (int i = 0; i < numberEmployees; i++) {
-					cout << "\nВведите информацию о " << i + 1 << "м сотруднике:" << endl;
+					cout << "\nР’РІРµРґРёС‚Рµ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ " << i + 1 << "Рј СЃРѕС‚СЂСѓРґРЅРёРєРµ:" << endl;
 					inputEmployee(newEmployee[i]);
 					cout << endl;
 				}
@@ -70,11 +70,11 @@ int main() {
 			}
 
 			if (!flag) {
-				cout << "Нужно выбрать 1й пункт меню!" << endl << endl;
+				cout << "РќСѓР¶РЅРѕ РІС‹Р±СЂР°С‚СЊ 1Р№ РїСѓРЅРєС‚ РјРµРЅСЋ!" << endl << endl;
 			}
 			else {
 				if (userChoice == 2) {
-					// Чтение/Вывод
+					// Р§С‚РµРЅРёРµ/Р’С‹РІРѕРґ
 					cout << endl;
 					for (int i = 0; i < numberEmployees; i++) {
 						printEmployee(newEmployee[i]);
@@ -83,24 +83,24 @@ int main() {
 					cout << endl;
 				}
 				else if (userChoice == 3) {
-					// Функция на удаление сотрудника
+					// Р¤СѓРЅРєС†РёСЏ РЅР° СѓРґР°Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°
 					deleteEmployee(newEmployee, numberEmployees);
 					cout << endl;
 				}
 				else if (userChoice == 4) {
-					// Функция на сортировку по фамилии
+					// Р¤СѓРЅРєС†РёСЏ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ РїРѕ С„Р°РјРёР»РёРё
 					sortByLastName(newEmployee, numberEmployees);
 				}
 				else if (userChoice == 5) {
-					// Функция на поиск по диапазону зарплаты
+					// Р¤СѓРЅРєС†РёСЏ РЅР° РїРѕРёСЃРє РїРѕ РґРёР°РїР°Р·РѕРЅСѓ Р·Р°СЂРїР»Р°С‚С‹
 					do {
-						cout << "Введите зарплату от: ";
+						cout << "Р’РІРµРґРёС‚Рµ Р·Р°СЂРїР»Р°С‚Сѓ РѕС‚: ";
 						cin >> temp;
 					} while (onlyDigits(temp));
 					minSalary = stod(temp);
 					
 					do {
-						cout << "Введите зарплату до: ";
+						cout << "Р’РІРµРґРёС‚Рµ Р·Р°СЂРїР»Р°С‚Сѓ РґРѕ: ";
 						cin >> temp;
 					} while (onlyDigits(temp));
 					maxSalary = stod(temp);
@@ -109,9 +109,9 @@ int main() {
 					searchBySalaryRange(newEmployee, numberEmployees, minSalary, maxSalary);
 				}
 				else if (userChoice == 6) {
-					// Функция на поиск по фамилии
+					// Р¤СѓРЅРєС†РёСЏ РЅР° РїРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё
 
-					cout << "Введите ключ: ";
+					cout << "Р’РІРµРґРёС‚Рµ РєР»СЋС‡: ";
 					cin >> temp;
 
 					key = new char[strlen(temp)];
@@ -122,12 +122,12 @@ int main() {
 					cout << endl;
 				}
 				else if (userChoice == 7) {
-					// Запись в файл
+					// Р—Р°РїРёСЃСЊ РІ С„Р°Р№Р»
 					for (int i = 0; i < numberEmployees; i++)
 						fileWrite(newEmployee[i]);
 				}
 				else if (userChoice == 8) {
-					// Чтение из файла
+					// Р§С‚РµРЅРёРµ РёР· С„Р°Р№Р»Р°
 					cout << "\nFile info: " << endl;
 					fileRead();
 				}
@@ -137,8 +137,8 @@ int main() {
 	
 	/*
 
-	// Добавление сотрудника (проверка корректность)
-	cout << "Введите сколько нужно добавить новых сотрудников: ";
+	// Р”РѕР±Р°РІР»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР° (РїСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ)
+	cout << "Р’РІРµРґРёС‚Рµ СЃРєРѕР»СЊРєРѕ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹С… СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ: ";
 	cin >> quantity;
 
 	newEmployee = new employee[numberEmployees+=quantity];
@@ -149,7 +149,7 @@ int main() {
 		addEmployee(newEmployee, numberEmployees, quantity);
 	}
 
-	// Чтение
+	// Р§С‚РµРЅРёРµ
 	for (int i = 0; i < numberEmployees; i++)
 		printEmployee(newEmployee[i]);
 	cout << endl << endl;
