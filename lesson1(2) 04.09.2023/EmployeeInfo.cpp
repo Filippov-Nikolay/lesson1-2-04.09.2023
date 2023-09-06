@@ -1,37 +1,37 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string>
 #include "EmployeeInfo.h"
 
 using namespace std;
 
-// Функции на добавление сотрудника
+// Р¤СѓРЅРєС†РёРё РЅР° РґРѕР±Р°РІР»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°
 void inputEmployee(employee& newEmployee) {
 	char* temp = new char[126];
 
 	do {
-		cout << "Имя: ";
+		cout << "РРјСЏ: ";
 		cin >> newEmployee.firstName;
 	} while (onlyLetters(newEmployee.firstName));
 
 	do {
-		cout << "Фамилия: ";
+		cout << "Р¤Р°РјРёР»РёСЏ: ";
 		cin >> newEmployee.lastName;
 	} while (onlyLetters(newEmployee.lastName));
 	
 	do {
-		cout << "Номер телефона: ";
+		cout << "РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: ";
 		cin >> newEmployee.phoneNumber;
 	} while (onlyDigits(newEmployee.phoneNumber) || numberOfCharacters(newEmployee.phoneNumber));
 
 	do {
 		do {
-			cout << "Зарплата: ";
+			cout << "Р—Р°СЂРїР»Р°С‚Р°: ";
 			cin >> temp;
 		} while (onlyDigits(temp));
 		newEmployee.salary = stod(temp);
 
 		if (newEmployee.salary <= 0)
-			cout << "Число должно быть больше 0!" << endl << endl;
+			cout << "Р§РёСЃР»Рѕ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0!" << endl << endl;
 	} while (newEmployee.salary <= 0);
 
 	delete[] temp;
@@ -39,16 +39,16 @@ void inputEmployee(employee& newEmployee) {
 }
 
 
-// Функции на чтение сотрудника
+// Р¤СѓРЅРєС†РёРё РЅР° С‡С‚РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°
 void printEmployee(const employee& newEmployee) {
-	cout << "Имя: " << newEmployee.firstName << endl;
-	cout << "Фамилия: " << newEmployee.lastName << endl;
-	cout << "Номер телефона: " << newEmployee.phoneNumber << endl;
-	cout << "Зарплата: " << newEmployee.salary << endl;
+	cout << "РРјСЏ: " << newEmployee.firstName << endl;
+	cout << "Р¤Р°РјРёР»РёСЏ: " << newEmployee.lastName << endl;
+	cout << "РќРѕРјРµСЂ С‚РµР»РµС„РѕРЅР°: " << newEmployee.phoneNumber << endl;
+	cout << "Р—Р°СЂРїР»Р°С‚Р°: " << newEmployee.salary << endl;
 }
 
 /*
-// Функция на изменение размера массива
+// Р¤СѓРЅРєС†РёСЏ РЅР° РёР·РјРµРЅРµРЅРёРµ СЂР°Р·РјРµСЂР° РјР°СЃСЃРёРІР°
 int* resizeArray(int* oldArray, int& oldSize, int newSize) {
 	int* newArray = new int[newSize];
 
@@ -80,10 +80,10 @@ void pushBack(employee*& arr, int& size, employee value) {
 */
 
 
-// ДОДЕЛАТЬ!
-// Фукнция на добавление сотдруника
+// Р”РћР”Р•Р›РђРўР¬!
+// Р¤СѓРєРЅС†РёСЏ РЅР° РґРѕР±Р°РІР»РµРЅРёРµ СЃРѕС‚РґСЂСѓРЅРёРєР°
 void addEmployee(employee*& oldEmployee, int oldNumberEmployee, int newNumberEmployee) {
-	int numberEmployees = oldNumberEmployee + newNumberEmployee; // Общее кол-во сотрудников
+	int numberEmployees = oldNumberEmployee + newNumberEmployee; // РћР±С‰РµРµ РєРѕР»-РІРѕ СЃРѕС‚СЂСѓРґРЅРёРєРѕРІ
 	employee* newAddEmployee = new employee[numberEmployees];
 
 	cout << "numberEmployees: " << numberEmployees << endl; // 3
@@ -114,7 +114,7 @@ void addEmployee(employee*& oldEmployee, int oldNumberEmployee, int newNumberEmp
 }
 
 
-// Функция на сортировку по фамилии
+// Р¤СѓРЅРєС†РёСЏ РЅР° СЃРѕСЂС‚РёСЂРѕРІРєСѓ РїРѕ С„Р°РјРёР»РёРё
 void sortByLastName(employee* sortLastName, int size) {
 	if (!sortLastName) {
 		cout << "is NULL" << endl << endl;
@@ -133,7 +133,7 @@ void sortByLastName(employee* sortLastName, int size) {
 }
 
 
-// Функция на поиск по фамилии
+// Р¤СѓРЅРєС†РёСЏ РЅР° РїРѕРёСЃРє РїРѕ С„Р°РјРёР»РёРё
 void searchByLastName(const employee* newEmployee, int size, const char* key) {
 	if (!newEmployee) {
 		cout << "is NULL" << endl << endl;
@@ -149,11 +149,11 @@ void searchByLastName(const employee* newEmployee, int size, const char* key) {
 	}
 
 	if (!found)
-		cout << "Ключ не найден!";
+		cout << "РљР»СЋС‡ РЅРµ РЅР°Р№РґРµРЅ!";
 }
 
 
-// Функция на поиск по диапазону зарплаты
+// Р¤СѓРЅРєС†РёСЏ РЅР° РїРѕРёСЃРє РїРѕ РґРёР°РїР°Р·РѕРЅСѓ Р·Р°СЂРїР»Р°С‚С‹
 void searchBySalaryRange(const employee* newEmployee, int size, double minSalary, double maxSalary) {
 	if (!newEmployee) {
 		cout << "is NULL" << endl << endl;
@@ -171,11 +171,11 @@ void searchBySalaryRange(const employee* newEmployee, int size, double minSalary
 	}
 
 	if (!found)
-		cout << "Работники с зарплатой от " << minSalary << " до " << maxSalary << " не найдено." << endl;
+		cout << "Р Р°Р±РѕС‚РЅРёРєРё СЃ Р·Р°СЂРїР»Р°С‚РѕР№ РѕС‚ " << minSalary << " РґРѕ " << maxSalary << " РЅРµ РЅР°Р№РґРµРЅРѕ." << endl;
 }
 
 
-// Функция на удаление сотрудника
+// Р¤СѓРЅРєС†РёСЏ РЅР° СѓРґР°Р»РµРЅРёРµ СЃРѕС‚СЂСѓРґРЅРёРєР°
 void deleteEmployee(employee* newEmployee, int& size) {
 	if (!newEmployee) {
 		cout << "is NULL" << endl << endl;
@@ -186,19 +186,19 @@ void deleteEmployee(employee* newEmployee, int& size) {
 	char userChoice;
 
 	if (size <= 0) {
-		cout << "Нет работников, которых можно было бы удалить." << endl;
+		cout << "РќРµС‚ СЂР°Р±РѕС‚РЅРёРєРѕРІ, РєРѕС‚РѕСЂС‹С… РјРѕР¶РЅРѕ Р±С‹Р»Рѕ Р±С‹ СѓРґР°Р»РёС‚СЊ." << endl;
 		return;
 	}
 
-	cout << "Введите индекс работника для удаления (0-" << size - 1 << "): ";
+	cout << "Р’РІРµРґРёС‚Рµ РёРЅРґРµРєСЃ СЂР°Р±РѕС‚РЅРёРєР° РґР»СЏ СѓРґР°Р»РµРЅРёСЏ (0-" << size - 1 << "): ";
 	cin >> index;
 
 	if (index < 0 || index >= size) {
-		cout << "Неверный индекс работника." << endl;
+		cout << "РќРµРІРµСЂРЅС‹Р№ РёРЅРґРµРєСЃ СЂР°Р±РѕС‚РЅРёРєР°." << endl;
 		return;
 	}
 	
-	cout << "Вы уверены, что хотите удалить этого работника? (y/n): ";
+	cout << "Р’С‹ СѓРІРµСЂРµРЅС‹, С‡С‚Рѕ С…РѕС‚РёС‚Рµ СѓРґР°Р»РёС‚СЊ СЌС‚РѕРіРѕ СЂР°Р±РѕС‚РЅРёРєР°? (y/n): ";
 	cin >> userChoice;
 
 	if (userChoice == 'y') {
@@ -214,15 +214,15 @@ void deleteEmployee(employee* newEmployee, int& size) {
 			newEmployee[i] = newEmployee[i + 1];
 
 		size--;
-		cout << "Работник удалён." << endl;
+		cout << "Р Р°Р±РѕС‚РЅРёРє СѓРґР°Р»С‘РЅ." << endl;
 	}
 	else
-		cout << "Удаление отменено" << endl;
+		cout << "РЈРґР°Р»РµРЅРёРµ РѕС‚РјРµРЅРµРЅРѕ" << endl;
 }
 
 
-// Проверки на корректность воода данных:
-// Только буквы
+// РџСЂРѕРІРµСЂРєРё РЅР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚СЊ РІРѕРѕРґР° РґР°РЅРЅС‹С…:
+// РўРѕР»СЊРєРѕ Р±СѓРєРІС‹
 bool onlyLetters(const char* content) { 
 	if (!content) {
 		cout << "is NULL" << endl << endl;
@@ -231,7 +231,7 @@ bool onlyLetters(const char* content) {
 
 	for (int i = 0; i < strlen(content); i++) {
 		if (isdigit(content[i])) {
-			cout << "Вы ввели недопустимый символ!" << endl << endl;
+			cout << "Р’С‹ РІРІРµР»Рё РЅРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЃРёРјРІРѕР»!" << endl << endl;
 			return true;
 		}
 	}
@@ -239,7 +239,7 @@ bool onlyLetters(const char* content) {
 	return false;
 }
 
-// Только цифры
+// РўРѕР»СЊРєРѕ С†РёС„СЂС‹
 bool onlyDigits(const char* content) { 
 	if (!content) {
 		cout << "is NULL" << endl << endl;
@@ -248,7 +248,7 @@ bool onlyDigits(const char* content) {
 
 	for (int i = 0; i < strlen(content); i++) {
 		if (isalpha(content[i]) || content[i] == ' ') {
-			cout << "Вы ввели недопустимый символ!" << endl << endl;
+			cout << "Р’С‹ РІРІРµР»Рё РЅРµРґРѕРїСѓСЃС‚РёРјС‹Р№ СЃРёРјРІРѕР»!" << endl << endl;
 			return true;
 		}
 	}
@@ -256,7 +256,7 @@ bool onlyDigits(const char* content) {
 	return false;
 }
 
-// Кол-во символов
+// РљРѕР»-РІРѕ СЃРёРјРІРѕР»РѕРІ
 bool numberOfCharacters(const char* content) { 
 	if (!content) {
 		cout << "is NULL" << endl << endl;
@@ -264,11 +264,11 @@ bool numberOfCharacters(const char* content) {
 	}
 
 	if (strlen(content) < 8) {
-		cout << "Длина должна быть не менее 8 символов!" << endl << endl;
+		cout << "Р”Р»РёРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµ РјРµРЅРµРµ 8 СЃРёРјРІРѕР»РѕРІ!" << endl << endl;
 		return true;
 	}
 	else if (strlen(content) > 10) {
-		cout << "Длина должна быть не больше 10 символов!" << endl << endl;
+		cout << "Р”Р»РёРЅР° РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РЅРµ Р±РѕР»СЊС€Рµ 10 СЃРёРјРІРѕР»РѕРІ!" << endl << endl;
 		return true;
 	}
 
